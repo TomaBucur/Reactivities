@@ -12,7 +12,10 @@ body {
   box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
 }
 
-
+/* Datepicker Form */
+.react-datepicker-wrapper {
+  width: 100%
+}
 
 /* HomePage CSS */
 
@@ -21,7 +24,7 @@ body {
   align-items: center;
   background-image: linear-gradient(
           135deg,
-          rgb(24, 42, 115) 0%,
+          rgb(24, 42, 115) 0%,  
           rgb(33, 138, 174) 69%,
           rgb(32, 167, 172) 89%
   ) !important;
