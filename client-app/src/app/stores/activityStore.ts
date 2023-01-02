@@ -2,7 +2,6 @@ import { makeAutoObservable, runInAction } from "mobx"
 import agent from "../api/agent";
 import { Activity } from "../models/activity"
 import { v4 as uuid } from 'uuid'
-import { act } from "@testing-library/react";
 import { format } from "date-fns";
 
 export default class ActivityStore {
