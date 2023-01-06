@@ -16,8 +16,8 @@ namespace Application.Activities
 
         public class Handler : IRequestHandler<Command, Result<Unit>>
         {
-        public DataContext _context;
-        private readonly IUserAccessor _userAccessor;
+            public DataContext _context;
+            private readonly IUserAccessor _userAccessor;
             public Handler(DataContext context, IUserAccessor userAccessor)
             {
                 _userAccessor = userAccessor;
@@ -32,19 +32,20 @@ namespace Application.Activities
                     .SingleOrDefaultAsync(x => x.Id == request.Id);
 
                 if(activity == null) return null;
+
                 var user = await _context.Users.FirstOrDefaultAsync(x => 
-                x.UserName == _userAccessor.GetUsername());
+                    x.UserName == _userAccessor.GetUsername());
 
                 if(user == null) return null;
 
-                var HostUserName = activity.Attendees.FirstOrDefault(x => x.IsHost)?.AppUser?.UserName;
+                var hostUsername = activity.Attendees.FirstOrDefault(x => x.IsHost)?.AppUser?.UserName;
 
                 var attendance = activity.Attendees.FirstOrDefault(x => x.AppUser.UserName == user.UserName);
 
-                if (attendance != null && HostUserName == user.UserName)
+                if (attendance != null && hostUsername == user.UserName)
                     activity.IsCancelled = !activity.IsCancelled;
 
-                if (attendance != null && HostUserName != user.UserName)
+                if (attendance != null && hostUsername != user.UserName)
                     activity.Attendees.Remove(attendance);
 
                 if (attendance == null)

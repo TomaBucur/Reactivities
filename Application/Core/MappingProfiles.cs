@@ -10,7 +10,7 @@ namespace Application.Core
         {
             CreateMap<Activity, Activity>();
             CreateMap<Activity, ActivityDTO>()
-                .ForMember(d => d.HostUserName, o=> o.MapFrom(
+                .ForMember(d => d.HostUsername, o=> o.MapFrom(
                     s => s.Attendees.FirstOrDefault(
                         x => x.IsHost).AppUser.UserName));
             CreateMap<ActivityAttendee, Profiles.Profile>()

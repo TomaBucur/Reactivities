@@ -7,8 +7,7 @@ using Persistence;
 namespace Infrastructure.Security
 {
     public class IsHostRequirement : IAuthorizationRequirement
-    {
-        
+    {        
     }
 
     public class IsHostRequirementHandler : AuthorizationHandler<IsHostRequirement>
@@ -17,7 +16,7 @@ namespace Infrastructure.Security
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public IsHostRequirementHandler(DataContext dbContext,
-         IHttpContextAccessor httpContextAccessor)
+            IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
             _dbContext = dbContext;
