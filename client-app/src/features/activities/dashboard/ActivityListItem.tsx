@@ -10,6 +10,8 @@ interface Props{
 
 export default function ActivityListItem({activity}: Props) {
 
+    console.log(activity.isHost + " - isHost " )
+    console.log(activity.isGoing + " - isGoing ")
     return(
        <Segment.Group>
             <Segment>
@@ -20,17 +22,15 @@ export default function ActivityListItem({activity}: Props) {
                             <Item.Header as={Link} to={`/activities/${activity.id}`}>
                                 {activity.title}
                             </Item.Header>
-                            {/* <Item.Description>
+                            <Item.Description>
                                 Hosted by {activity.host?.displayName}
                             </Item.Description>
-                            <Item.Description>
+                            {/* <Item.Description>
                                 <Label basic color='orange'>
                                     You are hosting the activity
                                 </Label>
-                            </Item.Description>
-                            <Item.Description>
-                                <Label>caca maca</Label> 
-                            </Item.Description> */}
+                            </Item.Description>*/}                            
+
                                 {activity.isHost && (
                                     <Item.Description>
                                         <Label basic color='orange'>

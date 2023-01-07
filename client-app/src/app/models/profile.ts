@@ -1,4 +1,3 @@
-import { isThisHour } from "date-fns";
 import { User } from "./User";
 
 export interface Profile {
