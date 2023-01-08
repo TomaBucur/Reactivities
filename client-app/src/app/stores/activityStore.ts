@@ -4,6 +4,7 @@ import { Activity, ActivityFormValues } from "../models/activity"
 import { format } from "date-fns";
 import { store } from "./store";
 import { Profile } from "../models/profile";
+import { runInThisContext } from "vm";
 
 export default class ActivityStore {
     activityRegistry = new Map<string, Activity>();
@@ -72,9 +73,9 @@ export default class ActivityStore {
     private setActivity = (activity: Activity) => {   
         const user = store.userStore.user;
         if(user) {
-            activity.isGoing = activity.attendees!.some(
+            activity.isGoing = activity.attendees.some(
                 a => a.username === user.username
-            )
+            );
             activity.isHost = activity.hostUsername === user.username;
             activity.host = activity.attendees?.find(x => x.username === activity.hostUsername);
         }
@@ -163,4 +164,20 @@ export default class ActivityStore {
         }
     }
 
+
+    cancelActivityToggle = async () =>  {
+        this.loading = true;
+        try {
+            await agent.Activities.attend(this.selectedActivity!.id);
+            runInAction(() => {
+                this.selectedActivity!.isCancelled = !this.selectedActivity?.isCancelled;
+                this.activityRegistry.set(this.selectedActivity!.id, this.selectedActivity!)
+            })
+        } catch (error) {
+            console.log(error)
+        } finally {
+            runInAction(() => this.loading = false)
+        }
+
+    }
 }
