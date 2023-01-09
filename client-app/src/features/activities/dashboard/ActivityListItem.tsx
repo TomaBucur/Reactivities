@@ -12,7 +12,8 @@ interface Props{
 export default function ActivityListItem({activity}: Props) {
 
     // console.log(activity.host?.username + " - Host " )
-    // console.log(activity.isGoing + " - isHost " )
+    console.log(activity.isGoing + " - isHost " )
+    console.log(activity.isHost + " - isHost " )
     // console.log(activity.attendees[0].username)
     // console.log(activity.attendees[0].displayName)
     // console.log(activity.hostUsername + " host username")
