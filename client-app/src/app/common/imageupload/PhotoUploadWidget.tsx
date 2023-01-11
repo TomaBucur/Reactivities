@@ -1,4 +1,5 @@
 import { Grid, Header } from "semantic-ui-react";
+import PhotoWidgetDropzone from "./PhotoWidgetDropzone";
 
 
 export default function PhotoUploadWidget() {
@@ -6,6 +7,7 @@ export default function PhotoUploadWidget() {
         <Grid>
             <Grid.Column width={4}>
                 <Header sub color='teal' content='Step 1 - Add Photo' />
+                <PhotoWidgetDropzone />
             </Grid.Column>
             <Grid.Column width={1}/>
             <Grid.Column width={4}>
