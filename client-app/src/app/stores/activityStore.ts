@@ -4,7 +4,6 @@ import { Activity, ActivityFormValues } from "../models/activity"
 import { format } from "date-fns";
 import { store } from "./store";
 import { Profile } from "../models/profile";
-import { runInThisContext } from "vm";
 
 export default class ActivityStore {
     activityRegistry = new Map<string, Activity>();
@@ -72,15 +71,15 @@ export default class ActivityStore {
 
     private setActivity = (activity: Activity) => {   
         const user = store.userStore.user;
-        console.log(user?.displayName);
-        console.log(user?.userName);
         
         if(user) {
             activity.isGoing = activity.attendees.some(
-                a => a.userName === user.userName
+                a => a.username === user.userName
             );
             activity.isHost = activity.hostUsername === user.userName;
-            activity.host = activity.attendees?.find(x => x.userName === activity.hostUsername);
+            activity.host = activity.attendees?.find(x => x.username === activity.hostUsername);
+            console.log(activity);
+            
         }
         activity.date = new Date(activity.date!);
         this.activityRegistry.set(activity.id, activity);   
@@ -151,7 +150,7 @@ export default class ActivityStore {
             runInAction(() => {
                 if(this.selectedActivity?.isGoing) {
                     this.selectedActivity.attendees = 
-                        this.selectedActivity.attendees?.filter(a => a.userName !== user?.userName);
+                        this.selectedActivity.attendees?.filter(a => a.username !== user?.userName);
                     this.selectedActivity.isGoing = false;
                 }else{
                     const attendee = new Profile(user!);
