@@ -5,6 +5,9 @@ export interface Profile {
     displayName: string;
     image?: string;
     Bio?: string;
+    followersCount:number;
+    followingCount:number;
+    following:boolean;
     photos?: Photo[];
 }
 
