@@ -9,8 +9,7 @@ namespace API.SignalR
         private readonly IMediator _mediator;
         public ChatHub(IMediator mediator)
         {
-            _mediator = mediator;
-            
+            _mediator = mediator;            
         }
 
         public async Task SendComment(Create.Command command)

@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Application.Core;
 using Application.Interfaces;
 using AutoMapper;
@@ -33,7 +29,7 @@ namespace Application.Comments
         {
             private readonly DataContext _context;
             private readonly IMapper _mapper;
-        private readonly IUserAccessor _userAccessor;
+            private readonly IUserAccessor _userAccessor;
             public Handler(DataContext context, IMapper mapper, IUserAccessor userAccessor)
             {
                 _userAccessor = userAccessor;                
