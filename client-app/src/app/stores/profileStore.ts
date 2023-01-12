@@ -102,12 +102,12 @@ export default class ProfileStore {
             store.activityStore.updateAttendeeFollowing(username);
             runInAction(() => {
                 if(this.profile && this.profile.username !== store.userStore.user?.userName) {
-                    following ? this.profile.followingCount++ : this.profile.followingCount--
+                    following ? this.profile.followersCount++ : this.profile.followersCount--
                     this.profile.following = !this.profile.following
                 }
                 this.followings.forEach(profile => {
                     if (profile.username === username) {
-                        profile.following ? profile.followingCount-- : profile.followingCount++;
+                        profile.following ? profile.followersCount-- : profile.followersCount++;
                         profile.following = !profile.following;
                     }
                 })
