@@ -6,13 +6,11 @@ import { User, UserFormValues } from "../models/user";
 import { router } from "../router/Routes";
 import { store } from "../stores/store";
 
-
 const sleep = (delay: number) => {
     return new Promise((resolve) => {
         setTimeout(resolve, delay)
     })
 }
-
 
 axios.defaults.baseURL = 'http://localhost:5000/api'
 
@@ -99,7 +97,9 @@ const Profiles = {
     setMainPhoto: (id:string) => requests.post(`/photos/${id}/setMain`, {}),
     deletePhoto: (id:string) => requests.del(`/photos/${id}`),
     updateProfile: (profile: Partial<Profile>) => requests.put(`/profile`, profile),
-    updateFollowing: (username: string) => requests.post(`/follow/${username}`, {})
+    updateFollowing: (username: string) => requests.post(`/follow/${username}`, {}),
+    listFollowings: (username: string, predicate: string) => 
+        requests.get<Profile[]>(`/follow/${username}?predicate=${predicate}`),
 }
 
 
