@@ -78,7 +78,6 @@ export default class ActivityStore {
             );
             activity.isHost = activity.hostUsername === user.userName;
             activity.host = activity.attendees?.find(x => x.username === activity.hostUsername);
-            console.log(activity);
             
         }
         activity.date = new Date(activity.date!);
