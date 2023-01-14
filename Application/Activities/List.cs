@@ -3,7 +3,6 @@ using Application.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 namespace Application.Activities
@@ -31,6 +30,7 @@ namespace Application.Activities
             public async Task<Result<PagedList<ActivityDTO>>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var query = _context.Activities
+                    .OrderBy(d => d.Date)
                     .ProjectTo<ActivityDTO>(_mapper.ConfigurationProvider, 
                         new {currentUsername = _userAccessor.GetUsername()})
                     .AsQueryable();
