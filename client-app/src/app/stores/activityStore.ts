@@ -63,7 +63,7 @@ export default class ActivityStore {
     }
 
     setPagination = (pagination: Pagination) => {
-        this.pagination = pagination
+        this.pagination = pagination;
     }
 
     
