@@ -33,7 +33,7 @@ export default class ActivityStore {
         this.pagingParames = pagingParams;
     }
 
-    setPredicate = (predicate: string, value: string | Date) {
+    setPredicate = (predicate: string, value: string | Date) => {
         const resetPredicate = () => {
             this.predicate.forEach((value, key) => {
                 if(key !== 'startDate') this.predicate.delete(key);
