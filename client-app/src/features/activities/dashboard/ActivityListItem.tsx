@@ -3,7 +3,6 @@ import { Button, Icon, Item, Label, Segment } from "semantic-ui-react";
 import { Activity } from "../../../app/models/activity";
 import {format} from 'date-fns'
 import ActivityListItemAttendee from "./ActivityListItemAttendee";
-import { store } from "../../../app/stores/store";
 
 interface Props{
     activity: Activity
@@ -11,16 +10,6 @@ interface Props{
 
 export default function ActivityListItem({activity}: Props) {
 
-    // console.log(activity.host?.username + " - Host " )
-    console.log(activity.isGoing + " - isHost " )
-    console.log(activity.isHost + " - isHost " )
-    // console.log(activity.attendees[0].username)
-    // console.log(activity.attendees[0].displayName)
-    // console.log(activity.hostUsername + " host username")
-    // var user = store.activityStore
-    // console.log(user + " user")
-    
-    // console.log("")
     return(
        <Segment.Group>
             <Segment>
@@ -29,13 +18,14 @@ export default function ActivityListItem({activity}: Props) {
                 }
                 <Item.Group>
                     <Item>
-                        <Item.Image style={{marginBottom: 3}} size='tiny' circular src='/assets/user.png' />
+                        <Item.Image style={{marginBottom: 3}} size='tiny' circular 
+                            src={activity.host?.image ||'/assets/user.png'} />
                         <Item.Content>
                             <Item.Header as={Link} to={`/activities/${activity.id}`}>
                                 {activity.title}
                             </Item.Header>
                             <Item.Description>
-                                Hosted by {activity.host?.displayName}
+                                Hosted by <Link to={`/profiles/${activity.hostUsername}`}>{activity.host?.displayName}</Link>
                             </Item.Description>                       
                                 {activity.isHost && (
                                     <Item.Description>
