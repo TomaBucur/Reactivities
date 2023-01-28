@@ -1,5 +1,6 @@
-import { string } from "yup";
 import { User } from "./user";
+
+
 
 export interface Profile {
     username: string;

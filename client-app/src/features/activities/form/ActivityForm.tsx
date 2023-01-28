@@ -21,7 +21,7 @@ export default observer( function ActivityForm() {
     const {id} = useParams();
     const navigate = useNavigate();
     
-    const [activity, setActivity] = useState<ActivityFormValues>(new ActivityFormValues);
+    const [activity, setActivity] = useState<ActivityFormValues>(new ActivityFormValues());
 
     const validationSchema = Yup.object({
         title: Yup.string().required('The activity title is required'),
