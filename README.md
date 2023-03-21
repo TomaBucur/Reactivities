@@ -11,6 +11,7 @@ It's a social application meant for people who want to gather together and parti
 - [Screenshots](#screenshots)
 - [Feedback](#feedback)
 - [License](#license)
+- [Contact Details](#contact-details)
 
 ## Features
 
@@ -37,6 +38,7 @@ Hi 👋, I'm Toma Bucur, a technology enthusiast. I am constantly learning and d
 - **Redux**
 - **Docker**
 
+## Contact Details
 You can reach me at **bucurtomaadrian@gmail.com** or on [LinkedIn](https://www.linkedin.com/in/toma-bucur/).
 
 ## Tech Stack
@@ -83,7 +85,7 @@ To use this application, visit [joinme.fly.dev](https://joinme.fly.dev) and crea
 
 ## Feedback
 
-If you have any feedback or questions, please don't hesitate to reach out to me at **bucurtomaadrian@gmail.com** or on [LinkedIn](https://www.linkedin.com/in/toma-bucur/).
+If you have any feedback or questions, please don't hesitate to reach out to me at [Contact Details](#contact-details).
 
 ## License
 
